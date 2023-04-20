@@ -1,0 +1,3 @@
+G:/Algotithms_DataStructures/Algotitms_Search/cmake-build-debug/CMakeFiles/Algotitms_Search.dir
+G:/Algotithms_DataStructures/Algotitms_Search/cmake-build-debug/CMakeFiles/edit_cache.dir
+G:/Algotithms_DataStructures/Algotitms_Search/cmake-build-debug/CMakeFiles/rebuild_cache.dir
