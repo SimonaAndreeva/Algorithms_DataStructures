@@ -1,46 +1,65 @@
+
 #include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <chrono>
 
 using std::cin;
 using std::cout;
 using std::endl;
+using std::string;
+using std::size;
 
 int main() {
-    char array_b[14] = {0, 1, 3, 3, 8, 8, 'a', 'a', 'd', 'e', 'e', 'n', 'r', 'v'};
+    char n[6];
+    for(int i = 0; i < 6; i++) {
+        cin>>n[i];
+    }
+
+    char array_b[14] = {'0', '1', '3', '3', '8', '8', 'a', 'a', 'd', 'e', 'e', 'n', 'r', 'v'};
     int length = std::size(array_b);
+    int left, right , middle, counter;
 
-    int n;
-    cin >> n;
+    for(int i = 0; i<6; i++) {
+        counter = 0;
+        middle = length / 2;
+        left = 0;
+        right = length;
+        bool isFounded = false;
 
+        while (left <= right) {
+            counter++;
 
-    int left, right = 0, middle;
-
-    middle = length / 2;
-    left = 0;
-    right = length;
-    bool isFounded = false;
-
-    while (left <= right) {
-
-        if (array_b[middle] == n) {
-            isFounded = true;
-            break;
-        } else {
-            if (n < array_b[middle]) {
-                left = 0;
-                right = middle - 1;
+            if (array_b[middle] == n[i]) {
+                isFounded = true;
+                break;
             } else {
-                left = middle + 1;
-
+                if (n[i] < array_b[middle]) {
+                    left = 0;
+                    right = middle - 1;
+                } else {
+                    left = middle + 1;
+                }
+                middle = (right + left) / 2;
             }
-
-            middle = (right + left) / 2;
+            cout<<"Left: "<<left<<"; ";
+            cout<<"Right: "<<right<<"; ";
+            cout<<"Middle: "<<middle<<endl;
+        }
+        cout<<"The number of times n was checked: "<<counter<<endl;
+        if (isFounded) {
+            cout << "Founded"<<endl;
+        } else {
+            cout << "Not founded"<<endl;
         }
     }
-
-    if (isFounded) {
-        cout << "Founded";
-    } else {
-        cout << "Not founded";
-    }
-    return 0;
 }
+
+
+
+
+
+
+
+
