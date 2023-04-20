@@ -1,2 +1,2 @@
-# Algotithms_DataStructures
+# Algorithms_DataStructures
 University tasks
