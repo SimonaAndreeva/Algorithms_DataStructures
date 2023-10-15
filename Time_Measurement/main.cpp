@@ -22,7 +22,7 @@ int main() {
 
     srand(time(NULL));
     int size = 10000;
-    float middleTimeSecetion, middleTimeBuble, middleTimeInsertion;
+    float TimeSelection, TimeBuble, TimeInsertion;
 
     for (size; size <= 200000; size = size + 10000) {
         cout << "Array with: " << size << endl;
@@ -42,35 +42,34 @@ int main() {
         copy(a, a + size, insertionArray);
 
         // Measure Selection sort time
-        middleTimeSecetion = 0;
         t0 = time(NULL);
         c0 = clock();
         selectionSort(selectionArray, size);
         c1 = clock();
         t1 = time(NULL);
-        middleTimeSecetion = (float) (c1 - c0) / CLOCKS_PER_SEC;
-        cout << "middle time: " << middleTimeSecetion / 3 << endl;
+        TimeSelection = (float) (c1 - c0) / CLOCKS_PER_SEC;
+        cout << "Selection time: " << TimeSelection << endl;
 
 
         // Measure Bubble sort time
-        middleTimeBuble = 0;
+        TimeBuble = 0;
         t0 = time(NULL);
         c0 = clock();
         bubbleSort(bubbleArray, size);
         c1 = clock();
         t1 = time(NULL);
-        middleTimeBuble = (float) (c1 - c0) / CLOCKS_PER_SEC;
-        cout << "middle time: " << middleTimeBuble / 3 << endl;
+        TimeBuble = (float) (c1 - c0) / CLOCKS_PER_SEC;
+        cout << "Bubble time: " << TimeBuble << endl;
 
         // Measure Insertion sort time
-        middleTimeInsertion = 0;
+        TimeInsertion = 0;
         t0 = time(NULL);
         c0 = clock();
         insertionSort(insertionArray, size);
         c1 = clock();
         t1 = time(NULL);
-        middleTimeInsertion = (float) (c1 - c0) / CLOCKS_PER_SEC;
-        cout << "middle time: " << middleTimeInsertion / 3 << endl;
+        TimeInsertion = (float) (c1 - c0) / CLOCKS_PER_SEC;
+        cout << "Insertion time: " << TimeInsertion << endl;
 
         cout << endl;
     }
