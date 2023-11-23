@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <algorithm>
 #include <stdlib.h>
 #include <time.h>
 #include <sys/types.h>
@@ -22,14 +22,14 @@ int main() {
 
     srand(time(NULL));
     int size = 10000;
-    float TimeSelection, TimeBuble, TimeInsertion;
+    float TimeSelection, TimeBubble, TimeInsertion;
 
-    for (size; size <= 200000; size = size + 10000) {
+    for (size; size <= 100000; size = size + 10000) {
         cout << "Array with: " << size << endl;
 
         // Generate array
         int a[size];
-        for (int i = 0; i <= size; i++) {
+        for (int i = 0; i < size; i++) {
             a[i] = randInt();
         }
         int selectionArray[size];
@@ -41,6 +41,16 @@ int main() {
         copy(a, a + size, bubbleArray);
         copy(a, a + size, insertionArray);
 
+        // Measure Bubble sort time
+        t0 = time(NULL);
+        c0 = clock();
+        bubbleSort(bubbleArray, size);
+        c1 = clock();
+        t1 = time(NULL);
+        TimeBubble = (float) (c1 - c0) / CLOCKS_PER_SEC;
+        cout << "Bubble time: " << TimeBubble << endl;
+
+
         // Measure Selection sort time
         t0 = time(NULL);
         c0 = clock();
@@ -51,18 +61,7 @@ int main() {
         cout << "Selection time: " << TimeSelection << endl;
 
 
-        // Measure Bubble sort time
-        TimeBuble = 0;
-        t0 = time(NULL);
-        c0 = clock();
-        bubbleSort(bubbleArray, size);
-        c1 = clock();
-        t1 = time(NULL);
-        TimeBuble = (float) (c1 - c0) / CLOCKS_PER_SEC;
-        cout << "Bubble time: " << TimeBuble << endl;
-
         // Measure Insertion sort time
-        TimeInsertion = 0;
         t0 = time(NULL);
         c0 = clock();
         insertionSort(insertionArray, size);
@@ -104,9 +103,9 @@ void bubbleSort(int arr[], int n) {
         swapped = false;
         for (j = 0; j < n - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                int b = arr[j];
+                int temp = arr[j];
                 arr[j] = arr[j + 1];
-                arr[j + 1] = b;
+                arr[j + 1] = temp;
                 swapped = true;
             }
         }
